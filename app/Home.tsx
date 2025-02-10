@@ -228,23 +228,24 @@ const Home = () => {
           )}
         </View>
 
-        <Modal visible={true} transparent={true} animationType='slide'>
-          <View >
-            <View>
-              <Text>Notification</Text>
-              <TouchableOpacity>
+        <Modal visible={false} transparent={true} animationType='slide'>
+          <View style={styles.modalOverlay}>
+            <View style={styles.modalHeader}>
+              <Text style={styles.modalTitle}>Notification</Text>
+              <TouchableOpacity
+              style={styles.closeButton}>
                 <Ionicons name='close' size={24}  color="#333" />
               </TouchableOpacity>
             </View>
 
             {
               [].map((value)=>(
-                <View>
-                  <View><Ionicons name="medical" size={24}/></View>
-                  <View>
-                    <Text>medication name</Text>
-                    <Text>medication dosage</Text>
-                    <Text>medication time</Text>
+                <View style={styles.notificationItem}>
+                  <View style={styles.notificationIcon}><Ionicons name="medical" size={24}/></View>
+                  <View  style={styles.notificationContent}>
+                    <Text style={styles.notificationTitle}>medication name</Text>
+                    <Text style={styles.notificationMessage}>medication dosage</Text>
+                    <Text style={styles.notificationTime}>medication time</Text>
                   </View>
                 </View>
               ))
@@ -495,6 +496,69 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     fontSize: 14,
     marginLeft: 4,
+  },
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    justifyContent: "flex-end",
+  },
+  modalContent: {
+    backgroundColor: "white",
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    padding: 20,
+    maxHeight: "80%",
+  },
+  modalHeader: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: "20%",
+    padding:"4%"
+  },
+  modalTitle: {
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "white",
+  },
+  closeButton: {
+    padding: 4,
+    backgroundColor:"red",
+    borderRadius: 50
+  },
+  notificationItem: {
+    flexDirection: "row",
+    padding: 15,
+    borderRadius: 12,
+    backgroundColor: "#f5f5f5",
+    marginBottom: 10,
+  },
+  notificationIcon: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: "#E8F5E9",
+    justifyContent: "center",
+    alignItems: "center",
+    marginRight: 15,
+  },
+  notificationContent: {
+    flex: 1,
+  },
+  notificationTitle: {
+    fontSize: 16,
+    fontWeight: "600",
+    color: "#333",
+    marginBottom: 4,
+  },
+  notificationMessage: {
+    fontSize: 14,
+    color: "#666",
+    marginBottom: 4,
+  },
+  notificationTime: {
+    fontSize: 12,
+    color: "#999",
   },
 })
 
